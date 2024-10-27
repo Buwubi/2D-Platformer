@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AlienController : MonoBehaviour
 {
+    [SerializeField] private Transform spawnPoint;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private LayerMask groundLayer; 
@@ -34,6 +35,15 @@ public class AlienController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, boxCollider.bounds.extents.y + 0.1f, groundLayer);
         return hit.collider != null;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin")) 
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
 
     private void OnDrawGizmos()
     {
