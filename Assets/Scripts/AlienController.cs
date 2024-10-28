@@ -35,10 +35,19 @@ public class AlienController : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     private bool ShouldDie() 
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, boxCollider.bounds.extents.y + 0.1f, sprinklesLayer);
         return hit.collider != null;
+=======
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+        }
+>>>>>>> Stashed changes
     }
 
     private bool IsGrounded()
